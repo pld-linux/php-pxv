@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	%{name}-%{version}.tar.gz
+# Source0-md5:	ac1b87ed1f8cbd74230922365728b5e2
 #URL:		
 BuildRequires:	autoconf
 BuildRequires:	automake
