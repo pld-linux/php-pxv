@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This package allows to validate XML documents in PHP.
 
 %description -l pl
-Ten pakiet umo¿liwia sprawdzanie poprawnosci dokumentow XML-a w PHP.
+Ten pakiet umo¿liwia sprawdzanie poprawno¶ci dokumentów XML w PHP.
 
 %prep
 %setup -q
@@ -28,14 +28,16 @@ Ten pakiet umo¿liwia sprawdzanie poprawnosci dokumentow XML-a w PHP.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure --libdir=/usr/lib/php
+%configure \
+	--libdir=%{_libdir}/php
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
