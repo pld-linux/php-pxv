@@ -23,9 +23,9 @@ Ten pakiet umo¿liwia sprawdzanie poprawnosci dokumentow XML w PHP.
 %setup -q
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
-autoheader
+%{__autoheader}
 %{__automake}
 %configure --libdir=/usr/lib/php
 %{__make}
