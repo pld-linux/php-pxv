@@ -1,7 +1,6 @@
 # TODO
 # - doesn't compile
-%define		_sysconfdir	/etc/php
-%define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
+# - .ini fragment
 Summary:	PHP XML Validator
 Summary(pl):	Narzêdzie do kontroli poprawno¶ci XML-a w PHP
 Name:		php-pxv
@@ -16,8 +15,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libxml2-devel
 BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.322
+BuildRequires:	rpmbuild(macros) >= 1.344
 %{?requires_php_extension}
+Requires:	php-common >= 4:5.0.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,7 +35,7 @@ Ten pakiet umo¿liwia sprawdzanie poprawno¶ci dokumentów XML w PHP.
 %{__autoheader}
 %{__automake}
 %configure \
-	--libdir=%{extensionsdir}
+	--libdir=%{php_extensiondir}
 %{__make}
 
 %install
@@ -49,16 +49,14 @@ install -d $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-[ ! -f /etc/apache/conf.d/??_mod_php.conf ] || %service -q apache restart
-[ ! -f /etc/httpd/httpd.conf/??_mod_php.conf ] || %service -q httpd restart
+%php_webserver_restart
 
 %postun
 if [ "$1" = 0 ]; then
-	[ ! -f /etc/apache/conf.d/??_mod_php.conf ] || %service -q apache restart
-	[ ! -f /etc/httpd/httpd.conf/??_mod_php.conf ] || %service -q httpd restart
+	%php_webserver_restart
 fi
 
 %files
 %defattr(644,root,root,755)
 %doc README ChangeLog
-%{extensionsdir}/*
+%attr(755,root,root) %{php_extensiondir}/*
