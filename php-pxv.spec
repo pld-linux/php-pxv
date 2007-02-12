@@ -2,7 +2,7 @@
 # - doesn't compile
 # - .ini fragment
 Summary:	PHP XML Validator
-Summary(pl):	NarzÍdzie do kontroli poprawno∂ci XML-a w PHP
+Summary(pl.UTF-8):   Narzƒôdzie do kontroli poprawno≈õci XML-a w PHP
 Name:		php-pxv
 Version:	0.1
 Release:	1
@@ -23,8 +23,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This package allows to validate XML documents in PHP.
 
-%description -l pl
-Ten pakiet umoøliwia sprawdzanie poprawno∂ci dokumentÛw XML w PHP.
+%description -l pl.UTF-8
+Ten pakiet umo≈ºliwia sprawdzanie poprawno≈õci dokument√≥w XML w PHP.
 
 %prep
 %setup -q
