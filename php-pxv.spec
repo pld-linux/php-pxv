@@ -2,7 +2,7 @@
 # - doesn't compile
 # - .ini fragment
 Summary:	PHP XML Validator
-Summary(pl.UTF-8):   Narzędzie do kontroli poprawności XML-a w PHP
+Summary(pl.UTF-8):	Narzędzie do kontroli poprawności XML-a w PHP
 Name:		php-pxv
 Version:	0.1
 Release:	1
